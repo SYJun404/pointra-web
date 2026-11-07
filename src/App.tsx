@@ -14,15 +14,14 @@ const chapters = [
     { id: "download", title: "安装下载", subtitle: "Download" },
 ];
 const platformName = platform === "windows" ? "Windows" : "Mac OS";
+const imgSrc = `${import.meta.env.BASE_URL}image/pointra.png`;
 
 const App = () => (
     <div className="site" id="top" data-platform={platform}>
         <header className="site-header">
             <div className="shell header-inner">
                 <a className="brand" href="#top">
-                    <span className="brand-mark">
-                        <FaArrowPointer aria-hidden="true" />
-                    </span>
+                    <img style={{ width: "24px" }} src={imgSrc} alt="Pointra" />
                     Pointra
                 </a>
                 <nav aria-label="主导航">
@@ -214,9 +213,7 @@ const App = () => (
 
         <footer className="shell site-footer">
             <a className="brand" href="#top">
-                <span className="brand-mark">
-                    <FaArrowPointer aria-hidden="true" />
-                </span>
+                <img style={{ width: "24px" }} src={imgSrc} alt="Pointra" />
                 Pointra
             </a>
             <div>
