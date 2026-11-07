@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaRotateRight } from "react-icons/fa6";
+import type { Platform } from "../platform";
 
 const steps = [
     {
@@ -33,13 +34,13 @@ const steps = [
     {
         title: "个性设置",
         subtitle: "Preferences",
-        shortcut: null,
+        shortcut: "Null",
         description:
             "点击系统托盘中的 Pointra 图标，进入设置界面，即可根据个人使用习惯，自由定制快捷键。",
     },
 ];
 
-const Approach = () => {
+const Approach = ({ platform }: { platform: Platform }) => {
     const [current, setCurrent] = useState(0);
     const videos = useRef<(HTMLVideoElement | null)[]>([]);
     const step = steps[current];
@@ -97,7 +98,13 @@ const Approach = () => {
                     <h3>{step.title}</h3>
                     <p className="mono muted">{step.subtitle}</p>
                     <p>{step.description}</p>
-                    {step.shortcut && <kbd>{step.shortcut}</kbd>}
+                    {step.shortcut && (
+                        <kbd>
+                            {platform === "macos"
+                                ? step.shortcut.replace("Alt", "Cmd")
+                                : step.shortcut}
+                        </kbd>
+                    )}
                 </div>
                 <figure className="media-frame">
                     <figcaption>
